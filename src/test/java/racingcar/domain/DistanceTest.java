@@ -15,7 +15,7 @@ class DistanceTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> new Distance(input));
+        assertThrows(IllegalArgumentException.class, () -> Distance.startRacing(input));
     }
     @Test
     @DisplayName("문자가 반복회수로 오면 예외를 발생시킨다.")
@@ -25,6 +25,6 @@ class DistanceTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> new Distance(input));
+        assertThrows(IllegalArgumentException.class, () -> Distance.startRacing(input));
     }
 }

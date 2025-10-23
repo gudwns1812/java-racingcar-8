@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.service.RacingCarService;
 import racingcar.dto.WinnerDto;
 import racingcar.view.InputView;
@@ -16,7 +17,7 @@ public class RacingController {
         String nameString = InputView.readName();
         service.setUpTrack(nameString);
         String move = InputView.readName();
-        WinnerDto result = service.race(move);
+        List<WinnerDto> result = service.race(move);
         OutputView.printScreen(result);
     }
 }

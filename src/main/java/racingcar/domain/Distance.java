@@ -7,9 +7,9 @@ import racingcar.util.Validator;
 public class Distance {
     private int count;
 
-    public Distance(String moveNumber) {
-        Validator.validateNumber(moveNumber);
-        int count = Integer.parseInt(moveNumber);
+    private Distance(String moveCount) {
+        Validator.validateNumber(moveCount);
+        int count = Integer.parseInt(moveCount);
         Validator.validateNumberNegative(count);
         this.count = count;
     }
@@ -18,5 +18,8 @@ public class Distance {
         return IntStream.rangeClosed(0, count)
                 .mapToLong(i -> Randoms.pickNumberInRange(0, 9))
                 .sum();
+    }
+    public static Distance startRacing(String moveCount) {
+        return new Distance(moveCount);
     }
 }

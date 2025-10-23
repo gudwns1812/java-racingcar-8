@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import java.util.List;
 import racingcar.domain.Participants;
 import racingcar.domain.RacingTrack;
 import racingcar.dto.WinnerDto;
@@ -17,8 +18,7 @@ public class RacingCarService {
         racingTrack.participateBy(participants);
     }
 
-    public WinnerDto race(String move) {
-        WinnerDto dto = racingTrack.chooseWinner(move);
-        return dto;
+    public List<WinnerDto> race(String move) {
+        return racingTrack.chooseWinner(move);
     }
 }
