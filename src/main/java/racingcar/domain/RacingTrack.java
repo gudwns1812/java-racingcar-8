@@ -1,8 +1,14 @@
 package racingcar.domain;
 
+import racingcar.dto.WinnerDto;
+
 public class RacingTrack {
 
-    public static void participateBy(Participants participants) {
+    public void participateBy(Participants participants) {
 
+    }
+
+    public WinnerDto chooseWinner(String move) {
+        return null;
     }
 }
