@@ -16,7 +16,7 @@ class ParticipantsTest {
         //given
         Participant p1 = Participant.nameWith("toby", new FixedDistanceStrategy(4));
         Participant p2 = Participant.nameWith("hug", new FixedDistanceStrategy(5));
-        RacingGroup participants = new RacingGroup(List.of(p1, p2));
+        RacingGame participants = new RacingGame(List.of(p1, p2));
         //when
         List<RacingResultDto> winners = participants.chooseWinner();
         //then
@@ -29,7 +29,7 @@ class ParticipantsTest {
         //given
         Participant p1 = Participant.nameWith("toby", new FixedDistanceStrategy(4));
         Participant p2 = Participant.nameWith("hug", new FixedDistanceStrategy(4));
-        RacingGroup participants = new RacingGroup(List.of(p1, p2));
+        RacingGame participants = new RacingGame(List.of(p1, p2));
         //when
         List<RacingResultDto> winners = participants.chooseWinner();
         //then

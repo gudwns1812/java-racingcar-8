@@ -2,7 +2,7 @@ package racingcar.service;
 
 import java.util.List;
 import racingcar.domain.NameParser;
-import racingcar.domain.RacingGroup;
+import racingcar.domain.RacingGame;
 import racingcar.domain.distance.DistanceStrategy;
 import racingcar.dto.RacingResultDto;
 
@@ -10,7 +10,7 @@ public class RacingCarService {
 
     private final NameParser nameParser;
     private final DistanceStrategy distance;
-    private RacingGroup participants;
+    private RacingGame participants;
 
     public RacingCarService(NameParser nameParser, DistanceStrategy distance) {
         this.nameParser = nameParser;

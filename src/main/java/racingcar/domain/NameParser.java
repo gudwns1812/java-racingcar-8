@@ -6,10 +6,10 @@ import racingcar.domain.distance.DistanceStrategy;
 public class NameParser {
     private static final String NAME_DELIMITER = ",";
 
-    public RacingGroup parseWith(String people, DistanceStrategy distanceStrategy) {
+    public RacingGame parseWith(String people, DistanceStrategy distanceStrategy) {
         List<String> names = List.of(people.split(NAME_DELIMITER));
         validateNameLength(names);
-        return RacingGroup.participate(names, distanceStrategy);
+        return RacingGame.racingGroupBy(names, distanceStrategy);
     }
 
     private void validateNameLength(List<String> names) {

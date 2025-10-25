@@ -4,19 +4,19 @@ import java.util.List;
 import racingcar.domain.distance.DistanceStrategy;
 import racingcar.dto.RacingResultDto;
 
-public class RacingGroup {
+public class RacingGame {
     private final List<Participant> participants;
     private int maxDistance;
 
-    RacingGroup(List<Participant> participants) {
+    RacingGame(List<Participant> participants) {
         this.participants = participants;
     }
 
-    public static RacingGroup participate(List<String> people, DistanceStrategy distance) {
+    public static RacingGame racingGroupBy(List<String> people, DistanceStrategy distance) {
         List<Participant> participants = people.stream()
                 .map(s -> Participant.nameWith(s, distance))
                 .toList();
-        return new RacingGroup(participants);
+        return new RacingGame(participants);
     }
 
     public List<RacingResultDto> race() {
@@ -29,9 +29,7 @@ public class RacingGroup {
                 .mapToInt(Participant::move)
                 .max()
                 .orElse(0);
-        if (maxDistance < distance) {
-            maxDistance = distance;
-        }
+        maxDistance = Math.max(maxDistance, distance);
     }
 
     private List<RacingResultDto> toDtos() {
