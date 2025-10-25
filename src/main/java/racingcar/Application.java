@@ -12,6 +12,5 @@ public class Application {
         Runtime.getRuntime().addShutdownHook(new Thread(Console::close,"shutdownHook"));
 
         controller.run();
-
     }
 }

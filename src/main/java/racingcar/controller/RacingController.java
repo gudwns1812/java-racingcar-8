@@ -21,6 +21,7 @@ public class RacingController {
         String nameString = inputView.readName();
         String move = inputView.readMoveCount();
         int moveNumber = validateMove(move);
+        outputView.printNotifyRunning();
         for (int i = 0; i < moveNumber; i++) {
             List<RacingResultDto> result = service.race(nameString);
             outputView.printMiddleResult(result);
