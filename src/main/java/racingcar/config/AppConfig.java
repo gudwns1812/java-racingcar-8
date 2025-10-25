@@ -1,16 +1,14 @@
 package racingcar.config;
 
 import racingcar.controller.RacingController;
-import racingcar.domain.RacingTrack;
+import racingcar.domain.NameParser;
+import racingcar.domain.distance.RandomDistanceStrategy;
 import racingcar.service.RacingCarService;
 
 public class AppConfig {
-    private RacingTrack track() {
-        return new RacingTrack();
-    }
 
     private RacingCarService service() {
-        return new RacingCarService(track());
+        return new RacingCarService(new NameParser(), new RandomDistanceStrategy());
     }
 
     public RacingController controller() {

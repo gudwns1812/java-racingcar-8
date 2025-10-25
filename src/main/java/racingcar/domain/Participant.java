@@ -1,18 +1,22 @@
 package racingcar.domain;
 
+import racingcar.domain.distance.DistanceStrategy;
 import racingcar.dto.WinnerDto;
 
 public class Participant {
-    private String name;
+    private final String name;
+    private final DistanceStrategy distance;
     private long totalDistance;
 
-    private Participant(String name) {
+    private Participant(String name , DistanceStrategy distance) {
         this.name = name;
+        this.distance = distance;
     }
 
-    public long move(String moveCount) {
-        Distance distance = Distance.startRacing(moveCount);
-        totalDistance = distance.calculateDistance();
+    public long move(int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            totalDistance += distance.calculateDistance();
+        }
         return totalDistance;
     }
 
@@ -21,10 +25,10 @@ public class Participant {
     }
 
     public WinnerDto toDto() {
-        return new WinnerDto(name, totalDistance);
+        return new WinnerDto(name);
     }
 
-    public static Participant nameWith(String name) {
-        return new Participant(name);
+    public static Participant nameWith(String name , DistanceStrategy distance) {
+        return new Participant(name, distance);
     }
 }

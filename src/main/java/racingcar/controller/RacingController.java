@@ -15,9 +15,17 @@ public class RacingController {
 
     public void run() {
         String nameString = InputView.readName();
-        service.setUpTrack(nameString);
         String move = InputView.readName();
-        List<WinnerDto> result = service.race(move);
+        int moveNumber = validateNumber(move);
+        List<WinnerDto> result = service.race(nameString, moveNumber);
         OutputView.printScreen(result);
+    }
+
+    private int validateNumber(String move) {
+        try {
+            return Integer.parseInt(move);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
     }
 }

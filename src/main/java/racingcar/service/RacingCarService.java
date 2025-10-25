@@ -1,24 +1,23 @@
 package racingcar.service;
 
 import java.util.List;
+import racingcar.domain.NameParser;
 import racingcar.domain.Participants;
-import racingcar.domain.RacingTrack;
+import racingcar.domain.distance.DistanceStrategy;
 import racingcar.dto.WinnerDto;
 
 public class RacingCarService {
 
-    private final RacingTrack racingTrack;
+    private final NameParser nameParser;
+    private final DistanceStrategy distance;
 
-    public RacingCarService(RacingTrack racingTrack) {
-        this.racingTrack = racingTrack;
+    public RacingCarService(NameParser nameParser, DistanceStrategy distance) {
+        this.nameParser = nameParser;
+        this.distance = distance;
     }
 
-    public void setUpTrack(String nameString) {
-        Participants participants = Participants.participate(nameString);
-        racingTrack.participateBy(participants);
-    }
-
-    public List<WinnerDto> race(String move) {
-        return racingTrack.chooseWinner(move);
+    public List<WinnerDto> race(String people, int move) {
+        Participants participants = nameParser.parseWith(people, distance);
+        return participants.race(move);
     }
 }
