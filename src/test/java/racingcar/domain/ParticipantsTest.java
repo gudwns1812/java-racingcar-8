@@ -20,7 +20,7 @@ class ParticipantsTest {
         //when
         List<RacingResultDto> winners = participants.chooseWinner();
         //then
-        assertThat(winners.getFirst().getName()).isEqualTo("hug");
+        assertThat(winners.getFirst().name()).isEqualTo("hug");
     }
 
     @Test

@@ -8,20 +8,24 @@ import racingcar.view.OutputView;
 
 public class RacingController {
     private final RacingCarService service;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    public RacingController(RacingCarService service) {
+    public RacingController(RacingCarService service, InputView inputView, OutputView outputView) {
         this.service = service;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
-        String nameString = InputView.readName();
-        String move = InputView.readMoveCount();
+        String nameString = inputView.readName();
+        String move = inputView.readMoveCount();
         int moveNumber = validateMove(move);
         for (int i = 0; i < moveNumber; i++) {
             List<RacingResultDto> result = service.race(nameString);
-            OutputView.printScreen(result);
+            outputView.printMiddleResult(result);
         }
-        OutputView.printScreen(service.chooseWinner());
+        outputView.printWinner(service.chooseWinner());
     }
 
     private int validateMove(String move) {

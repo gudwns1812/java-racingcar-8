@@ -6,14 +6,14 @@ import racingcar.dto.RacingResultDto;
 public class Participant {
     private final String name;
     private final DistanceStrategy distance;
-    private long totalDistance;
+    private int totalDistance;
 
     private Participant(String name, DistanceStrategy distance) {
         this.name = name;
         this.distance = distance;
     }
 
-    public long move() {
+    public int move() {
         int currentDistance = distance.calculateDistance();
         if (currentDistance >= 4) {
             totalDistance += currentDistance;
@@ -21,7 +21,7 @@ public class Participant {
         return totalDistance;
     }
 
-    public boolean match(long distance) {
+    public boolean match(int distance) {
         return totalDistance == distance;
     }
 

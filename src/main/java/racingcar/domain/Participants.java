@@ -6,7 +6,7 @@ import racingcar.dto.RacingResultDto;
 
 public class Participants {
     private final List<Participant> participants;
-    private long maxDistance;
+    private int maxDistance;
 
     Participants(List<Participant> participants) {
         this.participants = participants;
@@ -25,10 +25,10 @@ public class Participants {
     }
 
     private void updateDistance() {
-        long distance = participants.stream()
-                .mapToLong(Participant::move)
+        int distance = participants.stream()
+                .mapToInt(Participant::move)
                 .max()
-                .orElse(0L);
+                .orElse(0);
         if (maxDistance < distance) {
             maxDistance = distance;
         }
