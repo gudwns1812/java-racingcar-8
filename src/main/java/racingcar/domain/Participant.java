@@ -14,7 +14,10 @@ public class Participant {
     }
 
     public long move() {
-        totalDistance += distance.calculateDistance();
+        int currentDistance = distance.calculateDistance();
+        if (currentDistance >= 4) {
+            totalDistance += currentDistance;
+        }
         return totalDistance;
     }
 
