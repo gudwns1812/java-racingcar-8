@@ -13,8 +13,7 @@ public class NameParser {
     }
 
     private void validateNameLength(List<String> names) {
-        names.stream()
-                .forEach(NameParser::limitNameLength);
+        names.forEach(NameParser::limitNameLength);
     }
 
     private static void limitNameLength(String s) {
