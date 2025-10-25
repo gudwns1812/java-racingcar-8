@@ -3,8 +3,8 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.dto.RacingResultDto;
 import racingcar.service.RacingCarService;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.reader.InputView;
+import racingcar.view.printer.OutputView;
 
 public class RacingController {
     private final RacingCarService service;
