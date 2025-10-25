@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.distance.FixedDistanceStrategy;
-import racingcar.dto.WinnerDto;
+import racingcar.dto.RacingResultDto;
 
 class ParticipantsTest {
 
@@ -18,7 +18,7 @@ class ParticipantsTest {
         Participant p2 = Participant.nameWith("hug", new FixedDistanceStrategy(5));
         Participants participants = new Participants(List.of(p1, p2));
         //when
-        List<WinnerDto> winners = participants.race(2);
+        List<RacingResultDto> winners = participants.chooseWinner();
         //then
         assertThat(winners.getFirst().getName()).isEqualTo("hug");
     }
@@ -31,7 +31,7 @@ class ParticipantsTest {
         Participant p2 = Participant.nameWith("hug", new FixedDistanceStrategy(4));
         Participants participants = new Participants(List.of(p1, p2));
         //when
-        List<WinnerDto> winners = participants.race(2);
+        List<RacingResultDto> winners = participants.chooseWinner();
         //then
         assertThat(winners.size()).isEqualTo(2);
     }

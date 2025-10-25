@@ -19,7 +19,7 @@ class ParticipantTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> participant.move(input));
+        assertThrows(IllegalArgumentException.class, () -> participant.move());
     }
 
 }

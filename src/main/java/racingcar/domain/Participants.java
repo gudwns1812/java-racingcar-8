@@ -2,10 +2,11 @@ package racingcar.domain;
 
 import java.util.List;
 import racingcar.domain.distance.DistanceStrategy;
-import racingcar.dto.WinnerDto;
+import racingcar.dto.RacingResultDto;
 
 public class Participants {
     private final List<Participant> participants;
+    private long maxDistance;
 
     Participants(List<Participant> participants) {
         this.participants = participants;
@@ -18,21 +19,32 @@ public class Participants {
         return new Participants(participants);
     }
 
-    public List<WinnerDto> race(int moveCount) {
-        validatePositive(moveCount);
-        long maxDistance = participants.stream()
-                .mapToLong(s -> s.move(moveCount))
+    public List<RacingResultDto> race() {
+        updateDistance();
+        return toDtos();
+    }
+
+    private void updateDistance() {
+        long distance = participants.stream()
+                .mapToLong(Participant::move)
                 .max()
                 .orElse(0L);
+        if (maxDistance < distance) {
+            maxDistance = distance;
+        }
+    }
+
+    private List<RacingResultDto> toDtos() {
         return participants.stream()
-                .filter(participant -> participant.match(maxDistance))
                 .map(Participant::toDto)
                 .toList();
     }
 
-    private void validatePositive(int moveCount) {
-        if (moveCount <= 0) {
-            throw new IllegalArgumentException("0이하는 허용되지 않습니다.");
-        }
+
+    public List<RacingResultDto> chooseWinner() {
+        return participants.stream()
+                .filter(participant -> participant.match(maxDistance))
+                .map(Participant::toDto)
+                .toList();
     }
 }

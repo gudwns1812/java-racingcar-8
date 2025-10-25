@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.NameParser;
 import racingcar.domain.distance.FixedDistanceStrategy;
-import racingcar.dto.WinnerDto;
+import racingcar.dto.RacingResultDto;
 
 class RacingCarServiceTest {
 
@@ -24,9 +24,8 @@ class RacingCarServiceTest {
     void move_participant() {
         //given
         String input = "toby";
-        int moveCount = 4;
         //when
-        List<WinnerDto> race = service.race(input, moveCount);
+        List<RacingResultDto> race = service.race(input);
         //then
         assertThat(race.size()).isEqualTo(1);
     }
