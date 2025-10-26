@@ -18,5 +18,4 @@ class NameParserTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> nameParser.enter(input, new RandomDistanceStrategy()));
     }
-
 }

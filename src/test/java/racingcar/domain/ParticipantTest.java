@@ -21,5 +21,4 @@ class ParticipantTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> participant.move());
     }
-
 }

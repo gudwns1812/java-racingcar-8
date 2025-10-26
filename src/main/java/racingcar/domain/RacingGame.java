@@ -1,21 +1,17 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.distance.DistanceStrategy;
 import racingcar.dto.RacingResultDto;
 
 public class RacingGame {
     private final List<Participant> participants;
     private int maxDistance;
 
-    RacingGame(List<Participant> participants) {
+    private RacingGame(List<Participant> participants) {
         this.participants = participants;
     }
 
-    public static RacingGame racingGroupBy(List<String> people, DistanceStrategy distance) {
-        List<Participant> participants = people.stream()
-                .map(s -> Participant.nameWith(s, distance))
-                .toList();
+    public static RacingGame createRacingGame(List<Participant> participants) {
         return new RacingGame(participants);
     }
 

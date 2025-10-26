@@ -16,9 +16,10 @@ class ParticipantsTest {
         //given
         Participant p1 = Participant.nameWith("toby", new FixedDistanceStrategy(4));
         Participant p2 = Participant.nameWith("hug", new FixedDistanceStrategy(5));
-        RacingGame participants = new RacingGame(List.of(p1, p2));
+        RacingGame racingGame = RacingGame.createRacingGame(List.of(p1, p2));
         //when
-        List<RacingResultDto> winners = participants.chooseWinner();
+        racingGame.race();
+        List<RacingResultDto> winners = racingGame.chooseWinner();
         //then
         assertThat(winners.getFirst().name()).isEqualTo("hug");
     }
@@ -29,9 +30,10 @@ class ParticipantsTest {
         //given
         Participant p1 = Participant.nameWith("toby", new FixedDistanceStrategy(4));
         Participant p2 = Participant.nameWith("hug", new FixedDistanceStrategy(4));
-        RacingGame participants = new RacingGame(List.of(p1, p2));
+        RacingGame racingGame = RacingGame.createRacingGame(List.of(p1, p2));
         //when
-        List<RacingResultDto> winners = participants.chooseWinner();
+        racingGame.race();
+        List<RacingResultDto> winners = racingGame.chooseWinner();
         //then
         assertThat(winners.size()).isEqualTo(2);
     }
