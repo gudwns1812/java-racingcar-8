@@ -12,9 +12,9 @@ public class RacingCarService {
     private final DistanceStrategy distance;
     private RacingGame racingGame;
 
-    public RacingCarService(RacingEntrance nameParser, DistanceStrategy distance) {
-        this.racingEntrance = nameParser;
-        this.distance = distance;
+    public RacingCarService(RacingEntrance racingEntrance, DistanceStrategy distanceStrategy) {
+        this.racingEntrance = racingEntrance;
+        this.distance = distanceStrategy;
     }
 
     public List<RacingResultDto> race(String people) {
