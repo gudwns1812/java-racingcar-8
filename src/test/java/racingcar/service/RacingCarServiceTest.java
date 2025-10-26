@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingEntrance;
 import racingcar.domain.distance.FixedDistanceStrategy;
@@ -20,8 +19,7 @@ class RacingCarServiceTest {
     }
 
     @Test
-    @DisplayName("참가자가 1명일 때 우승자 계산")
-    void move_participant() {
+    void 참가자가_1명이면_참가자가_우승자가_된다() {
         //given
         String input = "toby";
         //when
