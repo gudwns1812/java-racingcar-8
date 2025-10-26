@@ -21,9 +21,11 @@ public class RacingController {
         int moveNumber = validateMove(move);
 
         outputView.printNotifyRunning();
+
         for (int i = 0; i < moveNumber; i++) {
             outputView.printMiddleResult(service.race(nameString));
         }
+
         outputView.printWinner(service.chooseWinner());
     }
 

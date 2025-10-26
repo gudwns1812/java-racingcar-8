@@ -25,6 +25,7 @@ public class RacingGame {
                 .mapToInt(Participant::move)
                 .max()
                 .orElse(0);
+
         maxDistance = Math.max(maxDistance, distance);
     }
 
@@ -33,7 +34,7 @@ public class RacingGame {
                 .map(Participant::toDto)
                 .toList();
     }
-    
+
     public List<RacingResultDto> chooseWinner() {
         return participants.stream()
                 .filter(participant -> participant.match(maxDistance))

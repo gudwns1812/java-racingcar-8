@@ -15,6 +15,7 @@ public class Participant {
 
     public int move() {
         int currentDistance = distanceStrategy.calculateDistance();
+
         if (currentDistance >= 4) {
             totalDistance += currentDistance;
         }
