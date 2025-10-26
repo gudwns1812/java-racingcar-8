@@ -3,17 +3,17 @@ package racingcar.domain;
 import java.util.List;
 import racingcar.domain.distance.DistanceStrategy;
 
-public class NameParser {
+public class RacingEntrance {
     private static final String NAME_DELIMITER = ",";
 
-    public RacingGame parseWith(String people, DistanceStrategy distanceStrategy) {
+    public RacingGame enter(String people, DistanceStrategy distanceStrategy) {
         List<String> names = List.of(people.split(NAME_DELIMITER));
         validateNameLength(names);
         return RacingGame.racingGroupBy(names, distanceStrategy);
     }
 
     private void validateNameLength(List<String> names) {
-        names.forEach(NameParser::limitNameLength);
+        names.forEach(RacingEntrance::limitNameLength);
     }
 
     private static void limitNameLength(String s) {

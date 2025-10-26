@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.NameParser;
+import racingcar.domain.RacingEntrance;
 import racingcar.domain.distance.FixedDistanceStrategy;
 import racingcar.dto.RacingResultDto;
 
@@ -16,7 +16,7 @@ class RacingCarServiceTest {
 
     @BeforeEach
     void setUp() {
-        service = new RacingCarService(new NameParser(), new FixedDistanceStrategy(4));
+        service = new RacingCarService(new RacingEntrance(), new FixedDistanceStrategy(4));
     }
 
     @Test

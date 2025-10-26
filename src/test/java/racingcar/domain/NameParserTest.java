@@ -12,11 +12,11 @@ class NameParserTest {
     void exception_6letter_name() {
         //given
         String input = "aaaaaaaa";
-        NameParser nameParser = new NameParser();
+        RacingEntrance nameParser = new RacingEntrance();
         //when
         //then
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> nameParser.parseWith(input, new RandomDistanceStrategy()));
+                () -> nameParser.enter(input, new RandomDistanceStrategy()));
     }
 
 }
