@@ -14,6 +14,7 @@ public interface OutputView {
                 .map(dto -> dto.name() + " : " + "-".repeat(dto.distance()))
                 .collect(Collectors.joining("\n"));
     }
+
     default String WinnerString(List<RacingResultDto> dtos) {
         return dtos.stream()
                 .map(RacingResultDto::name)

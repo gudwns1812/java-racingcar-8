@@ -2,7 +2,7 @@ package racingcar.domain.distance;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomDistanceStrategy extends DistanceStrategy {
+public class RandomDistanceStrategy implements DistanceStrategy {
 
     @Override
     public int calculateDistance() {

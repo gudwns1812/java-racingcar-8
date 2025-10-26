@@ -5,16 +5,16 @@ import racingcar.dto.RacingResultDto;
 
 public class Participant {
     private final String name;
-    private final DistanceStrategy distance;
+    private final DistanceStrategy distanceStrategy;
     private int totalDistance;
 
     private Participant(String name, DistanceStrategy distance) {
         this.name = name;
-        this.distance = distance;
+        this.distanceStrategy = distance;
     }
 
     public int move() {
-        int currentDistance = distance.calculateDistance();
+        int currentDistance = distanceStrategy.calculateDistance();
         if (currentDistance >= 4) {
             totalDistance += currentDistance;
         }

@@ -1,8 +1,8 @@
 package racingcar.domain.distance;
 
-public class FixedDistanceStrategy extends DistanceStrategy {
+public class FixedDistanceStrategy implements DistanceStrategy {
 
-    private int fixed;
+    private final int fixed;
 
     public FixedDistanceStrategy(int fixed) {
         this.fixed = fixed;

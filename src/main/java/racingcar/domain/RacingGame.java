@@ -33,8 +33,7 @@ public class RacingGame {
                 .map(Participant::toDto)
                 .toList();
     }
-
-
+    
     public List<RacingResultDto> chooseWinner() {
         return participants.stream()
                 .filter(participant -> participant.match(maxDistance))

@@ -8,21 +8,21 @@ import racingcar.dto.RacingResultDto;
 
 public class RacingCarService {
 
-    private final RacingEntrance nameParser;
+    private final RacingEntrance racingEntrance;
     private final DistanceStrategy distance;
-    private RacingGame participants;
+    private RacingGame racingGame;
 
     public RacingCarService(RacingEntrance nameParser, DistanceStrategy distance) {
-        this.nameParser = nameParser;
+        this.racingEntrance = nameParser;
         this.distance = distance;
     }
 
     public List<RacingResultDto> race(String people) {
-        participants = nameParser.enter(people, distance);
-        return participants.race();
+        racingGame = racingEntrance.enter(people, distance);
+        return racingGame.race();
     }
 
     public List<RacingResultDto> chooseWinner() {
-        return participants.chooseWinner();
+        return racingGame.chooseWinner();
     }
 }
