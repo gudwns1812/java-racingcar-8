@@ -16,8 +16,8 @@ public class RacingController {
     }
 
     public void run() {
-        String nameString = inputView.readName();
-        String move = inputView.readMoveCount();
+        String nameString = readName();
+        String move = readMoveCount();
         int moveNumber = validateMove(move);
 
         outputView.printNotifyRunning();
@@ -27,6 +27,16 @@ public class RacingController {
         }
 
         outputView.printWinner(service.chooseWinner());
+    }
+
+    private String readName() {
+        outputView.printInputMoveCountRequest();
+        return inputView.readName();
+    }
+
+    private String readMoveCount() {
+        outputView.printInputMoveCountRequest();
+        return inputView.readMoveCount();
     }
 
     private int validateMove(String move) {
