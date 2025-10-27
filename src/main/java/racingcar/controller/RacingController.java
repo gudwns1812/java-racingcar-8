@@ -6,11 +6,12 @@ import racingcar.view.printer.OutputView;
 import racingcar.view.reader.InputView;
 
 public class RacingController {
+    private final RacingEntrance entrance;
     private final InputView inputView;
     private final OutputView outputView;
-    private RacingEntrance entrance;
 
-    public RacingController(InputView inputView, OutputView outputView) {
+    public RacingController(RacingEntrance entrance, InputView inputView, OutputView outputView) {
+        this.entrance = entrance;
         this.inputView = inputView;
         this.outputView = outputView;
     }

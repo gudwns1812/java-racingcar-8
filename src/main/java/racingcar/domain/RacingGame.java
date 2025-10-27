@@ -5,10 +5,11 @@ import racingcar.dto.RacingResultDto;
 
 public class RacingGame {
     private final List<Participant> participants;
-    private int maxDistance;
+    private final Distance maxDistance;
 
     private RacingGame(List<Participant> participants) {
         this.participants = participants;
+        maxDistance = Distance.DEFAULT;
     }
 
     public static RacingGame createRacingGame(List<Participant> participants) {
@@ -23,7 +24,7 @@ public class RacingGame {
     private void updateDistance() {
         participants.forEach(participant -> {
             participant.move();
-            participant.compareDistance(this);
+            updateMaxDistanceIfLessThan(participant.getDistance());
         });
     }
 
@@ -40,7 +41,7 @@ public class RacingGame {
                 .toList();
     }
 
-    void updateMaxDistanceIfLessThan(int distance) {
-        maxDistance = Math.max(maxDistance, distance);
+    private void updateMaxDistanceIfLessThan(Distance otherDistance) {
+        maxDistance.updateIfGreaterThan(otherDistance);
     }
 }

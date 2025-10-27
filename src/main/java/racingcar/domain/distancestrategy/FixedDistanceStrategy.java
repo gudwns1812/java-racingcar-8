@@ -1,4 +1,4 @@
-package racingcar.domain.distance;
+package racingcar.domain.distancestrategy;
 
 public class FixedDistanceStrategy implements DistanceStrategy {
 

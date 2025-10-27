@@ -2,16 +2,18 @@ package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.domain.distance.RandomDistanceStrategy;
+import racingcar.domain.distancestrategy.RandomDistanceStrategy;
 
 public class RacingEntrance {
     private static final String NAME_DELIMITER = ",";
 
     public RacingGame createRacingGame(String people) {
         validateBlank(people);
+
         List<Participant> participants = Arrays.stream(people.split(NAME_DELIMITER))
-                .map(name -> Participant.nameWith(name, new RandomDistanceStrategy()))
-                .toList();
+                .map(name -> Participant.nameWith(
+                        name, Distance.createDistanceWith(new RandomDistanceStrategy())
+                )).toList();
 
         return RacingGame.createRacingGame(participants);
     }

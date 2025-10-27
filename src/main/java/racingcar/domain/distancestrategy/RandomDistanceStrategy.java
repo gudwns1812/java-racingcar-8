@@ -1,4 +1,4 @@
-package racingcar.domain.distance;
+package racingcar.domain.distancestrategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
