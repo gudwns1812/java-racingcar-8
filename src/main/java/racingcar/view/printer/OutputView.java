@@ -6,14 +6,14 @@ import racingcar.dto.RacingResultDto;
 
 public abstract class OutputView {
 
-    protected String MiddleResultString(List<RacingResultDto> dtos) {
-        return dtos.stream()
+    protected String MiddleResultString(List<RacingResultDto> results) {
+        return results.stream()
                 .map(dto -> dto.name() + " : " + "-".repeat(dto.distance()))
                 .collect(Collectors.joining("\n"));
     }
 
-    protected String WinnerString(List<RacingResultDto> dtos) {
-        return dtos.stream()
+    protected String WinnerString(List<RacingResultDto> results) {
+        return results.stream()
                 .map(RacingResultDto::name)
                 .collect(Collectors.joining(", "));
     }
@@ -21,6 +21,6 @@ public abstract class OutputView {
     public abstract void printInputNameRequest();
     public abstract void printInputMoveCountRequest();
     public abstract void printNotifyRunning();
-    public abstract void printMiddleResult(List<RacingResultDto> dtos);
-    public abstract void printWinner(List<RacingResultDto> dtos);
+    public abstract void printMiddleResult(List<RacingResultDto> results);
+    public abstract void printWinner(List<RacingResultDto> results);
 }

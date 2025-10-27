@@ -27,13 +27,13 @@ public class ConsolePrinter extends OutputView {
     }
 
     @Override
-    public void printMiddleResult(List<RacingResultDto> dtos) {
-        System.out.println(MiddleResultString(dtos));
+    public void printMiddleResult(List<RacingResultDto> results) {
+        System.out.println(MiddleResultString(results));
         System.out.println();
     }
 
     @Override
-    public void printWinner(List<RacingResultDto> dtos) {
-        System.out.println(FINAL_WINNER + WinnerString(dtos));
+    public void printWinner(List<RacingResultDto> results) {
+        System.out.println(FINAL_WINNER + WinnerString(results));
     }
 }
