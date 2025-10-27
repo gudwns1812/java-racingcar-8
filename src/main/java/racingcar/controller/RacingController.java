@@ -30,7 +30,7 @@ public class RacingController {
     }
 
     private String readName() {
-        outputView.printInputMoveCountRequest();
+        outputView.printInputNameRequest();
         return inputView.readName();
     }
 
