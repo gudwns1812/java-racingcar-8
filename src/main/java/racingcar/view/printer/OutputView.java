@@ -20,7 +20,7 @@ public abstract class OutputView {
 
     public abstract void printInputNameRequest();
     public abstract void printInputMoveCountRequest();
-    public abstract void printNotifyRunning();
+    public abstract void printNotifyResult();
     public abstract void printMiddleResult(List<RacingResultDto> results);
     public abstract void printWinner(List<RacingResultDto> results);
 }

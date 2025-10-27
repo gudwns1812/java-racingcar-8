@@ -21,7 +21,7 @@ public class ConsolePrinter extends OutputView {
     }
 
     @Override
-    public void printNotifyRunning() {
+    public void printNotifyResult() {
         System.out.println();
         System.out.println(Middle);
     }
