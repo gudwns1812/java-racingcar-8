@@ -13,13 +13,12 @@ public class Participant {
         this.distanceStrategy = distance;
     }
 
-    public int move() {
+    public void move() {
         int currentDistance = distanceStrategy.calculateDistance();
 
         if (currentDistance >= 4) {
             totalDistance += currentDistance;
         }
-        return totalDistance;
     }
 
     public boolean match(int distance) {
@@ -32,5 +31,9 @@ public class Participant {
 
     public static Participant nameWith(String name, DistanceStrategy distance) {
         return new Participant(name, distance);
+    }
+
+    public void compareDistance(RacingGame racingGame) {
+        racingGame.updateMaxDistanceIfLessThan(totalDistance);
     }
 }
