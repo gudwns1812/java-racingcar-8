@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import racingcar.dto.RacingResultDto;
 
 public interface OutputView {
+    void printInputNameRequest();
+    void printInputMoveCountRequest();
     void printNotifyRunning();
     void printMiddleResult(List<RacingResultDto> dtos);
     void printWinner(List<RacingResultDto> dtos);
