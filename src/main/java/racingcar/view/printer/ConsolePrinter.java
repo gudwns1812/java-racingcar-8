@@ -3,7 +3,7 @@ package racingcar.view.printer;
 import java.util.List;
 import racingcar.dto.RacingResultDto;
 
-public class ConsolePrinter implements OutputView {
+public class ConsolePrinter extends OutputView {
     private static final String FINAL_WINNER = "최종 우승자 : ";
     private static final String Middle = "실행 결과";
     private static final String INPUT_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";

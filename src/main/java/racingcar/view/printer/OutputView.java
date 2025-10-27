@@ -4,22 +4,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.dto.RacingResultDto;
 
-public interface OutputView {
-    void printInputNameRequest();
-    void printInputMoveCountRequest();
-    void printNotifyRunning();
-    void printMiddleResult(List<RacingResultDto> dtos);
-    void printWinner(List<RacingResultDto> dtos);
+public abstract class OutputView {
 
-    default String MiddleResultString(List<RacingResultDto> dtos) {
+    protected String MiddleResultString(List<RacingResultDto> dtos) {
         return dtos.stream()
                 .map(dto -> dto.name() + " : " + "-".repeat(dto.distance()))
                 .collect(Collectors.joining("\n"));
     }
 
-    default String WinnerString(List<RacingResultDto> dtos) {
+    protected String WinnerString(List<RacingResultDto> dtos) {
         return dtos.stream()
                 .map(RacingResultDto::name)
                 .collect(Collectors.joining(", "));
     }
+
+    public abstract void printInputNameRequest();
+    public abstract void printInputMoveCountRequest();
+    public abstract void printNotifyRunning();
+    public abstract void printMiddleResult(List<RacingResultDto> dtos);
+    public abstract void printWinner(List<RacingResultDto> dtos);
 }

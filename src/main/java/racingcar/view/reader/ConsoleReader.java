@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleReader implements InputView {
 
-
     @Override
     public String readName() {
         return Console.readLine();
