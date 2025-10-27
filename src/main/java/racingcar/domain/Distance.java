@@ -1,11 +1,8 @@
 package racingcar.domain;
 
 import racingcar.domain.distancestrategy.DistanceStrategy;
-import racingcar.domain.distancestrategy.NoneDistanceStrategy;
-import racingcar.dto.RacingResultDto;
 
 public class Distance {
-    public static final Distance DEFAULT = createDistanceWith(new NoneDistanceStrategy());
     private static final int MOVE_THRESHOLD = 4;
 
     private final DistanceStrategy distanceStrategy;

@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
+import racingcar.domain.distancestrategy.NoneDistanceStrategy;
 import racingcar.dto.RacingResultDto;
 
 public class RacingGame {
@@ -9,7 +10,7 @@ public class RacingGame {
 
     private RacingGame(List<Participant> participants) {
         this.participants = participants;
-        maxDistance = Distance.DEFAULT;
+        maxDistance = Distance.createDistanceWith(new NoneDistanceStrategy());
     }
 
     public static RacingGame createRacingGame(List<Participant> participants) {
