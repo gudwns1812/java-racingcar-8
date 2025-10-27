@@ -1,32 +1,33 @@
 package racingcar.controller;
 
-import racingcar.service.RacingCarService;
+import racingcar.domain.RacingEntrance;
+import racingcar.domain.RacingGame;
 import racingcar.view.printer.OutputView;
 import racingcar.view.reader.InputView;
 
 public class RacingController {
-    private final RacingCarService service;
     private final InputView inputView;
     private final OutputView outputView;
+    private RacingEntrance entrance;
 
-    public RacingController(RacingCarService service, InputView inputView, OutputView outputView) {
-        this.service = service;
+    public RacingController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
     public void run() {
         String nameString = readName();
-        String move = readMoveCount();
-        int moveNumber = validateMove(move);
+        int moveNumber = readMoveCount();
 
-        outputView.printNotifyRunning();
+        RacingGame racingGame = entrance.createRacingGame(nameString);
+
+        outputView.printNotifyResult();
 
         for (int i = 0; i < moveNumber; i++) {
-            outputView.printMiddleResult(service.race(nameString));
+            outputView.printMiddleResult(racingGame.race());
         }
 
-        outputView.printWinner(service.chooseWinner());
+        outputView.printWinner(racingGame.chooseWinner());
     }
 
     private String readName() {
@@ -34,9 +35,10 @@ public class RacingController {
         return inputView.readName();
     }
 
-    private String readMoveCount() {
+    private int readMoveCount() {
         outputView.printInputMoveCountRequest();
-        return inputView.readMoveCount();
+        String move = inputView.readMoveCount();
+        return validateMove(move);
     }
 
     private int validateMove(String move) {

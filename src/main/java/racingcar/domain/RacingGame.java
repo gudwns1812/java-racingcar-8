@@ -17,7 +17,7 @@ public class RacingGame {
 
     public List<RacingResultDto> race() {
         updateDistance();
-        return toDtos();
+        return toResultDtoList();
     }
 
     private void updateDistance() {
@@ -27,7 +27,7 @@ public class RacingGame {
         });
     }
 
-    private List<RacingResultDto> toDtos() {
+    private List<RacingResultDto> toResultDtoList() {
         return participants.stream()
                 .map(Participant::toDto)
                 .toList();

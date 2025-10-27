@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.distance.RandomDistanceStrategy;
 
 class NameParserTest {
 
@@ -14,6 +13,6 @@ class NameParserTest {
         //when
         //then
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> nameParser.enter(input, new RandomDistanceStrategy()));
+                () -> nameParser.createRacingGame(input));
     }
 }
