@@ -21,12 +21,10 @@ public class RacingGame {
     }
 
     private void updateDistance() {
-        int distance = participants.stream()
-                .mapToInt(Participant::move)
-                .max()
-                .orElse(0);
-
-        maxDistance = Math.max(maxDistance, distance);
+        participants.forEach(participant -> {
+            participant.move();
+            participant.compareDistance(this);
+        });
     }
 
     private List<RacingResultDto> toDtos() {
@@ -40,5 +38,9 @@ public class RacingGame {
                 .filter(participant -> participant.match(maxDistance))
                 .map(Participant::toDto)
                 .toList();
+    }
+
+    void updateMaxDistanceIfLessThan(int distance) {
+        maxDistance = Math.max(maxDistance, distance);
     }
 }

@@ -1,15 +1,15 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.distance.DistanceStrategy;
+import racingcar.domain.distance.RandomDistanceStrategy;
 
 public class RacingEntrance {
     private static final String NAME_DELIMITER = ",";
 
-    public RacingGame enter(String people, DistanceStrategy distanceStrategy) {
+    public RacingGame enter(String people) {
         List<String> names = List.of(people.split(NAME_DELIMITER));
         validateNames(names);
-        return createRacingGame(names, distanceStrategy);
+        return createRacingGame(names);
     }
 
     private void validateNames(List<String> names) {
@@ -26,9 +26,9 @@ public class RacingEntrance {
         }
     }
 
-    private RacingGame createRacingGame(List<String> names, DistanceStrategy distanceStrategy) {
+    private RacingGame createRacingGame(List<String> names) {
         List<Participant> participants = names.stream()
-                .map(s -> Participant.nameWith(s, distanceStrategy))
+                .map(s -> Participant.nameWith(s, new RandomDistanceStrategy()))
                 .toList();
         return RacingGame.createRacingGame(participants);
     }
